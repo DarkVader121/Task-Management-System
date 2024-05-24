@@ -15,10 +15,10 @@ const Hero = () => {
             </Card>
 
             <div className='grid grid-cols-4 gap-10' style={{ width: '110rem', height: '45rem' }}>
-                <Card className='p-5'>
+                <Card className='p-5 overflow-auto'>
                   <Completed/>
                 </Card>
-                <Card className='p-5 col-span-2'>
+                <Card className='p-5 col-span-2 overflow-auto'>
                   <ThingsTodo />
                 </Card>
                 <Card className='p-5'>
