@@ -8,11 +8,15 @@ import { useStore  } from '../stores'
 import { format } from 'date-fns';
 
 import { EditThingsTodo, DeleteThingsTodo } from '../dialogs';
+import { CompleteTask } from '../components'
 
 
 const ThingsTodo = () => {
     const { state } = useStore();
     const { todos } = state;
+
+     // Filter out the completed todos
+     const activeTodos = todos.filter(todo => !todo.completed);
 
     useEffect(() => {
         console.log('Todos have been updated:', todos);
@@ -26,8 +30,8 @@ const ThingsTodo = () => {
             </Typography>
         </div>
         
-        {todos.length > 0 ? (
-                    todos.map((todo, index) => (
+        {activeTodos.length > 0 ? (
+            activeTodos.map((todo, index) => (
                         <Card className="p-3 w-full bg-gray-200 mt-3" key={index}>
                             <div className='flex align-center justify-between'>
                                 <div className="flex justify-start align-center">
@@ -45,10 +49,9 @@ const ThingsTodo = () => {
                             <Typography  variant="h1" id="Inter" className="lg:text-base mt-3">
                                 {todo.description}
                             </Typography>
+                            {todo.completed ? "Completed" : "Not Completed"}
                             <div className='flex justify-center min-w-full mt-5'>
-                                <Button color='blue' className='flex justify-center w-80'>
-                                    Complete Task
-                                </Button>
+                                <CompleteTask/>
                             </div>
                             
                         </Card>

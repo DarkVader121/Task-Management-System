@@ -3,7 +3,7 @@ import {
     Card,
     Typography,
   } from "@material-tailwind/react";
-  import { Completed, ThingsTodo, NewTask, RandomNotes } from '../components'
+import { Completed, ThingsTodo, NewTask, RandomNotes } from '../components'
 
 const Hero = () => {
     return (
