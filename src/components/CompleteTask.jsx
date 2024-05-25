@@ -3,7 +3,7 @@ import { useStore } from '../stores';
 import React, {useState} from 'react'
 
 
-const CompleteTask = ({index}) => {
+const CompleteTask = ({ todo } ) => {
     const { dispatch } = useStore();
     const [btnloading, setLoading ] = useState(false); 
 
@@ -14,7 +14,7 @@ const CompleteTask = ({index}) => {
         setTimeout(() => {
             dispatch({
                 type: 'COMPLETE_TASK',
-                index: index,
+                id: todo.id,
                 payload: { completed: true }
             });
 
