@@ -12,7 +12,7 @@ const RandomNotes = () => {
     const handleOnChange = (event) => {
         setNotes(event.target.value);
     }
-    
+
     return (
      <>
         <div className='flex align-center'>
@@ -26,7 +26,7 @@ const RandomNotes = () => {
             <Textarea label="Message" value={notes} onChange={handleOnChange} style={{ height: '10rem' }}/>
         </div>
      </>
-      );
+    );
 }
 
 export default RandomNotes
