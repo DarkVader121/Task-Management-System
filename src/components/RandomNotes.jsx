@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import {
     Typography,
     Textarea,
@@ -6,6 +7,12 @@ import {
 
 
 const RandomNotes = () => {
+    const [notes, setNotes] = useState("randomNotes");
+
+    const handleOnChange = (event) => {
+        setNotes(event.target.value);
+    }
+    
     return (
      <>
         <div className='flex align-center'>
@@ -16,7 +23,7 @@ const RandomNotes = () => {
         </div>
         <br/>
         <div>
-            <Textarea label="Message" style={{ height: '10rem' }}/>
+            <Textarea label="Message" value={notes} onChange={handleOnChange} style={{ height: '10rem' }}/>
         </div>
      </>
       );
