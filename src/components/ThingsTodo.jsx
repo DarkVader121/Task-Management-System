@@ -51,7 +51,7 @@ const ThingsTodo = () => {
                             </Typography>
                             {todo.completed ? "Completed" : "Not Completed"}
                             <div className='flex justify-center min-w-full mt-5'>
-                                <CompleteTask/>
+                                <CompleteTask index={index}/>
                             </div>
                             
                         </Card>

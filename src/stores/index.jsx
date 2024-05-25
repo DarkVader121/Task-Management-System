@@ -32,6 +32,13 @@ function reducer(state, action) {
         todos: state.todos.filter((_, index) => index !== action.index)
       };
 
+    case 'COMPLETE_TASK':
+      return {
+        ...state,
+        todos: state.todos.map((todo, index) =>
+          index === action.index ? { ...todo, ...action.payload } : todo
+        )
+      }
 
     default:
       return state;
