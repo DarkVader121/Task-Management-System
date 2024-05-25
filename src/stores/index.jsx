@@ -19,8 +19,8 @@ function reducer(state, action) {
     case 'UPDATE_TODO':
       return {
         ...state,
-        todos: state.todos.map((todo, index) =>
-          index === action.index ? { ...todo, ...action.payload } : todo
+        todos: state.todos.map(todo =>
+          todo.id === action.id ? { ...todo, ...action.payload } : todo
         )
       };
 

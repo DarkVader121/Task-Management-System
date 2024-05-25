@@ -40,9 +40,9 @@ const ThingsTodo = () => {
                                     <Typography  variant="h1" id="Inter" className="font-bold lg:text-2xl">
                                         {todo.title}
                                     </Typography>
-                                    <EditThingsTodo todo={todo} index={index}/>
+                                    <EditThingsTodo todo={todo} index={todo.id}/>
                                 </div>
-                               <DeleteThingsTodo todo={todo} index={index}/>
+                               <DeleteThingsTodo todo={todo} index={todo.id}/>
                             </div>
                             <Typography  variant="h1" id="Inter" className="lg:text-sm text-red-400 mt-1">
                                 {`Deadline: ${format(new Date(todo.deadline), 'EEE MMM dd yyyy')}`}
@@ -51,11 +51,9 @@ const ThingsTodo = () => {
                             <Typography  variant="h1" id="Inter" className="lg:text-base mt-3">
                                 {todo.description}
                             </Typography>
-                            {todo.completed ? "Completed" : "Not Completed"}
                             <div className='flex justify-center min-w-full mt-5'>
-                                <CompleteTask index={index}/>
+                                <CompleteTask todo={todo}/>
                             </div>
-                            
                         </Card>
                     ))
                 ) : (

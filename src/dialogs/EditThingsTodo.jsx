@@ -3,7 +3,7 @@ import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, Input, Textarea
 import { format } from 'date-fns';
 import { useStore } from '../stores';
 
-export function EditThingsTodo( { todo, index } ) {
+export function EditThingsTodo( { todo } ) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
     const [title, setTitle] = useState(todo.title);
@@ -13,7 +13,7 @@ export function EditThingsTodo( { todo, index } ) {
     const handleUpdate = () => {
         dispatch({
             type: 'UPDATE_TODO',
-            index: index,
+            id: todo.id, // Use todo's id instead of index
             payload: { title, description }
         });
         setOpen(false); // Close the modal or editing view after update
