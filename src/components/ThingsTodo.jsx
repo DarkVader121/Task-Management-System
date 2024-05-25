@@ -33,7 +33,7 @@ const ThingsTodo = () => {
                                     <Typography  variant="h1" id="Inter" className="font-bold lg:text-2xl">
                                         {todo.title}
                                     </Typography>
-                                    <i className="fa-solid fa-pen-to-square text-2xl ml-5 cursor-pointer" ></i>
+                                    <EditThingsTodo todo={todo} index={index}/>
                                 </div>
                                 <i className="fa-solid fa-trash text-2xl ml-5 cursor-pointer text-red-400 mr-3"></i>
                             </div>
@@ -45,8 +45,10 @@ const ThingsTodo = () => {
                                 {todo.description}
                             </Typography>
                             <div className='flex justify-center min-w-full mt-5'>
-                                <EditThingsTodo todo={todo} />
-
+                                <EditThingsTodo todo={todo} index={index}/>
+                                <Button color='blue' className='flex justify-center w-80'>
+                                    Complete Task
+                                </Button>
                             </div>
                             
                         </Card>

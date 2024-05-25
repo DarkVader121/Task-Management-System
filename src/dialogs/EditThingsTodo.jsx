@@ -1,19 +1,27 @@
 import React, {useState} from "react";
 import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, Input, Textarea, Typography } from "@material-tailwind/react";
 import { format } from 'date-fns';
+import { useStore } from '../stores';
 
-
-export function EditThingsTodo( { todo } ) {
-    const [open, setOpen] = React.useState(false);
+export function EditThingsTodo( { todo, index } ) {
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
     const [title, setTitle] = useState(todo.title);
     const [description, setDescription] = useState(todo.description);
+    const { dispatch } = useStore();
 
+    const handleUpdate = () => {
+        dispatch({
+            type: 'UPDATE_TODO',
+            index: index,
+            payload: { title, description }
+        });
+        setOpen(false); // Close the modal or editing view after update
+    };
+    
     return (
         <>
-            <Button color='blue' className='flex justify-center w-80'  onClick={handleOpen}>
-                Complete Task
-            </Button>
+            <i className="fa-solid fa-pen-to-square text-2xl ml-5 cursor-pointer" onClick={handleOpen}></i>
             <Dialog className="p-5" open={open} handler={handleOpen}>
                 <DialogHeader>
                     <Input variant="static" label="Title" placeholder="Description" size="lg" value={title} onChange={(e) => {setTitle (e.target.value) }}/>
@@ -23,7 +31,7 @@ export function EditThingsTodo( { todo } ) {
                         {`Deadline: ${format(new Date(todo.deadline), 'EEE MMM dd yyyy')}`}
                     </Typography>
                     <br/>
-                    <Textarea label="Message"  value={description} onChange={(e) => { setDescription(e.target.value) }}/>
+                    <Textarea label="Description"  value={description} onChange={(e) => { setDescription(e.target.value) }}/>
                 </DialogBody>
                 <DialogFooter>
                 <Button
@@ -34,7 +42,7 @@ export function EditThingsTodo( { todo } ) {
                 >
                     <span>Cancel</span>
                 </Button>
-                <Button variant="gradient" color="green" onClick={handleOpen}>
+                <Button variant="gradient" color="green" onClick={handleUpdate}>
                     <span>Confirm</span>
                 </Button>
                 </DialogFooter>
