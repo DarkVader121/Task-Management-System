@@ -6,7 +6,7 @@ import { useStore } from '../stores';
 import React, {useState} from 'react'
 
 export default function NewTask () {
-
+  const [btnLoading, setBtnLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
@@ -16,17 +16,23 @@ export default function NewTask () {
     e.preventDefault();
     if (!title.trim()) return;
 
-     // Create a new todo object
-    const newTodo = {
-      id: new Date().getTime(), // Using timestamp to generate a unique ID
-      title,
-      description,
-      deadline,
-      completed: false
-    };
+    setBtnLoading(true);
+    // Set a timeout to stop loading after 5 seconds
+    setTimeout(() => {
+      // Create a new todo object
+      const newTodo = {
+        id: new Date().getTime(), // Using timestamp to generate a unique ID
+        title,
+        description,
+        deadline,
+        completed: false
+      };
 
-    // Dispatch the add todo action
-    dispatch({ type: 'ADD_TODO', payload: newTodo });
+      // Dispatch the add todo action
+      dispatch({ type: 'ADD_TODO', payload: newTodo });
+      setBtnLoading(false);
+    }, 2000); // 5000 milliseconds equals 5 seconds
+
 
     // Clear form fields after submission
     setTitle('');
@@ -70,7 +76,7 @@ export default function NewTask () {
         <br/>
         <Textarea size="lg" label="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)}  />
 
-        <Button color="amber" className='mt-3'  size="lg" type="submit">Create Task</Button>
+        <Button color="amber" className='mt-3'  size="lg" type="submit" loading={btnLoading}>Create Task</Button>
         </form>
       </>
       );

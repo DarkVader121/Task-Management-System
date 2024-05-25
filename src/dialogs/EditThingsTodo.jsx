@@ -31,11 +31,11 @@ export function EditThingsTodo( { todo } ) {
                     <Input variant="static" label="Title"  placeholder="Description" size="lg" value={title} onChange={(e) => {setTitle (e.target.value) }}/>
                 </DialogHeader>
                 <DialogBody>
+                    <Textarea label="Description"  value={description} onChange={(e) => { setDescription(e.target.value) }}/>
+                    <br/>
                     <Typography  variant="h1" id="Inter" className="lg:text-sm text-red-400">
                         {`Deadline: ${format(new Date(todo.deadline), 'EEE MMM dd yyyy')}`}
                     </Typography>
-                    <br/>
-                    <Textarea label="Description"  value={description} onChange={(e) => { setDescription(e.target.value) }}/>
                 </DialogBody>
                 <DialogFooter>
                 <Button

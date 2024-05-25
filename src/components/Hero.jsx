@@ -15,12 +15,6 @@ const Hero = () => {
             </Card>
 
             <div className='grid grid-cols-4 gap-10' style={{ width: '110rem', height: '45rem' }}>
-                <Card className='p-5 overflow-auto'>
-                  <Completed/>
-                </Card>
-                <Card className='p-5 col-span-2 overflow-auto'>
-                  <ThingsTodo />
-                </Card>
                 <div className='min-h-max flex flex-col justify-between' >
                   <Card className='p-5'  style={{ height: '25rem' }}>
                     <NewTask/>
@@ -29,7 +23,12 @@ const Hero = () => {
                     <RandomNotes/>
                   </Card>
                 </div>
-                
+                <Card className='p-5 col-span-2 overflow-auto'>
+                  <ThingsTodo />
+                </Card>
+                <Card className='p-5 overflow-auto'>
+                  <Completed/>
+                </Card>
             </div>
         </div>
       );
