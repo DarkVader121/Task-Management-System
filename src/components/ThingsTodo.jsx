@@ -57,7 +57,7 @@ const ThingsTodo = () => {
                         </Card>
                     ))
                 ) : (
-                    <Typography variant="h6" className="mt-4">
+                    <Typography variant="h1" className="text-xl mt-4">
                         No todos yet!
                     </Typography>
                 )}
