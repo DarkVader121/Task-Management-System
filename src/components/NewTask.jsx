@@ -1,4 +1,4 @@
-import { Input, Popover, PopoverHandler, PopoverContent, Typography, Button, } from "@material-tailwind/react";
+import { Input, Popover, PopoverHandler, PopoverContent, Typography, Button, Textarea} from "@material-tailwind/react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
@@ -43,17 +43,12 @@ export default function NewTask () {
         </div>
         <form onSubmit={handleSubmit}>
         <br/>
-        <Input size="lg" label="Title" type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <br/>
-        <Input size="lg" label="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)}  />
-        <br/>
         <Popover placement="bottom">
         <PopoverHandler>
           <Input
             label="Select a Deadline"
             onChange={(e) => setDeadline(e.target.value)}
             value={deadline ? format(deadline, "PPP") : ""}
-
           />
         </PopoverHandler>
         <PopoverContent>
@@ -69,8 +64,12 @@ export default function NewTask () {
           />
         </PopoverContent>
         </Popover>
+        <br/>
+        <Input size="lg" label="Title" type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <br/>
+        <Textarea size="lg" label="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)}  />
 
-        <Button color="amber" className='mt-10'  size="lg" type="submit">Create Task</Button>
+        <Button color="amber" className='mt-3'  size="lg" type="submit">Create Task</Button>
         </form>
       </>
       );
