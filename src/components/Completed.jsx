@@ -6,6 +6,7 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { useStore } from '../stores';
+import { format } from 'date-fns';
 
 const Completed = () => {
     const [open, setOpen] = useState(0); // Initially no accordion is open
@@ -39,7 +40,7 @@ const Completed = () => {
                         </AccordionHeader>
                         <AccordionBody>
                             <Typography variant="h1" className="lg:text-sm mb-1 text-blue-500">
-                                Date Completed: {todo.dateCompleted} {/* Adjust according to your data structure */}
+                            {`Date Complete: ${format(new Date(todo.dateCompleted), 'EEE MMM dd yyyy')}`}
                             </Typography>
                             <Typography variant="h1" className="lg:text-base">
                                 {todo.description}

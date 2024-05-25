@@ -15,7 +15,7 @@ const CompleteTask = ({ todo } ) => {
             dispatch({
                 type: 'COMPLETE_TASK',
                 id: todo.id,
-                payload: { completed: true }
+                payload: { completed: true, dateCompleted: new Date() }
             });
 
             setLoading(false);
