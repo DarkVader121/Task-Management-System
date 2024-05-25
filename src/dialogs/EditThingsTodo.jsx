@@ -46,7 +46,7 @@ export function EditThingsTodo( { todo, index } ) {
                 >
                     <span>Cancel</span>
                 </Button>
-                <Button variant="gradient" color="green" onClick={handleUpdate}>
+                <Button variant="gradient" color="blue" onClick={handleUpdate}>
                     <span>Confirm</span>
                 </Button>
                 </DialogFooter>
