@@ -5,8 +5,9 @@ import {
     Button,
 } from "@material-tailwind/react";
 import { useStore  } from '../stores'
+import { format } from 'date-fns';
 
-import { EditThingsTodo } from '../dialogs/EditThingsTodo';
+import { EditThingsTodo, DeleteThingsTodo } from '../dialogs';
 
 
 const ThingsTodo = () => {
@@ -35,17 +36,16 @@ const ThingsTodo = () => {
                                     </Typography>
                                     <EditThingsTodo todo={todo} index={index}/>
                                 </div>
-                                <i className="fa-solid fa-trash text-2xl ml-5 cursor-pointer text-red-400 mr-3"></i>
+                               <DeleteThingsTodo todo={todo} index={index}/>
                             </div>
                             <Typography  variant="h1" id="Inter" className="lg:text-sm text-red-400 mt-1">
-                                {`Deadline: ${todo.deadline}`}
+                                {`Deadline: ${format(new Date(todo.deadline), 'EEE MMM dd yyyy')}`}
                             </Typography>
 
                             <Typography  variant="h1" id="Inter" className="lg:text-base mt-3">
                                 {todo.description}
                             </Typography>
                             <div className='flex justify-center min-w-full mt-5'>
-                                <EditThingsTodo todo={todo} index={index}/>
                                 <Button color='blue' className='flex justify-center w-80'>
                                     Complete Task
                                 </Button>

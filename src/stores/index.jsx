@@ -16,6 +16,7 @@ function reducer(state, action) {
       console.log('Updated State:', newState);
       return newState;
 
+    // Update Todo
     case 'UPDATE_TODO':
       return {
         ...state,
@@ -23,6 +24,15 @@ function reducer(state, action) {
           index === action.index ? { ...todo, ...action.payload } : todo
         )
       };
+
+    // DELETE Todo
+    case 'DELETE_TODO':
+      return {
+        ...state,
+        todos: state.todos.filter((_, index) => index !== action.index)
+      };
+
+
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, Input, Textarea
 import { format } from 'date-fns';
 import { useStore } from '../stores';
 
-export function EditThingsTodo( { todo, index } ) {
+export function DeleteThingsTodo( { todo, index } ) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
     const [title, setTitle] = useState(todo.title);
@@ -12,23 +12,19 @@ export function EditThingsTodo( { todo, index } ) {
 
     const handleUpdate = () => {
         dispatch({
-            type: 'UPDATE_TODO',
+            type: 'DELETE_TODO',
             index: index,
-            payload: { title, description }
         });
         setOpen(false); // Close the modal or editing view after update
     };
     
     return (
         <>
-            <i className="fa-solid fa-pen-to-square text-2xl ml-5 cursor-pointer" onClick={handleOpen}></i>
+            <i className="fa-solid fa-trash text-2xl ml-5 cursor-pointer text-red-400 mr-3" onClick={handleOpen}></i>
             <Dialog className="p-5" open={open} handler={handleOpen}>
-                <Typography  variant="h1" id="Inter" className="lg:text-2xl">
-                        Update Task
-                </Typography>
-                <br />
                 <DialogHeader>
-                    <Input variant="static" label="Title"  placeholder="Description" size="lg" value={title} onChange={(e) => {setTitle (e.target.value) }}/>
+                  
+                    <Input variant="static" label="Title" placeholder="Description" size="lg" value={title} onChange={(e) => {setTitle (e.target.value) }}/>
                 </DialogHeader>
                 <DialogBody>
                     <Typography  variant="h1" id="Inter" className="lg:text-sm text-red-400">
