@@ -28,7 +28,7 @@ function reducer(state, action) {
     case 'DELETE_TODO':
       return {
         ...state,
-        todos: state.todos.filter((_, index) => index !== action.index)
+        todos: state.todos.filter(todo => todo.id !== action.id)
       };
 
     case 'COMPLETE_TASK':

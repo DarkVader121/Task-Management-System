@@ -40,9 +40,9 @@ const ThingsTodo = () => {
                                     <Typography  variant="h1" id="Inter" className="font-bold lg:text-2xl">
                                         {todo.title}
                                     </Typography>
-                                    <EditThingsTodo todo={todo} index={todo.id}/>
+                                    <EditThingsTodo todo={todo} />
                                 </div>
-                               <DeleteThingsTodo todo={todo} index={todo.id}/>
+                               <DeleteThingsTodo todo={todo}/>
                             </div>
                             <Typography  variant="h1" id="Inter" className="lg:text-sm text-red-400 mt-1">
                                 {`Deadline: ${format(new Date(todo.deadline), 'EEE MMM dd yyyy')}`}

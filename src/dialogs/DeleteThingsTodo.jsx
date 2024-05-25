@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Button, Dialog, DialogHeader, DialogFooter,Typography } from "@material-tailwind/react";
 import { useStore } from '../stores';
 
-export function DeleteThingsTodo( { todo, index } ) {
+export function DeleteThingsTodo( { todo } ) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
     const { dispatch } = useStore();
@@ -10,7 +10,7 @@ export function DeleteThingsTodo( { todo, index } ) {
     const handleDelete = () => {
         dispatch({
             type: 'DELETE_TODO',
-            index: index,
+            id: todo.id,
         });
         setOpen(false); // This ensures the modal or view is closed after deletion
     };
