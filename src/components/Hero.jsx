@@ -3,7 +3,7 @@ import {
     Card,
     Typography,
   } from "@material-tailwind/react";
-  import { Completed, ThingsTodo, NewTask } from '../components'
+  import { Completed, ThingsTodo, NewTask, RandomNotes } from '../components'
 
 const Hero = () => {
     return (
@@ -21,9 +21,15 @@ const Hero = () => {
                 <Card className='p-5 col-span-2 overflow-auto'>
                   <ThingsTodo />
                 </Card>
-                <Card className='p-5'>
+                <div className='min-h-max flex flex-col justify-between' >
+                  <Card className='p-5'  style={{ height: '25rem' }}>
                     <NewTask/>
-                </Card>
+                  </Card>
+                  <Card className='p-5 mt-3'  style={{ height: '17rem' }}  >
+                    <RandomNotes/>
+                  </Card>
+                </div>
+                
             </div>
         </div>
       );
