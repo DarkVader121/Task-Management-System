@@ -18,6 +18,7 @@ export default function NewTask () {
 
      // Create a new todo object
     const newTodo = {
+      id: new Date().getTime(), // Using timestamp to generate a unique ID
       title,
       description,
       deadline,

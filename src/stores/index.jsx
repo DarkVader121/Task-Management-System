@@ -12,8 +12,7 @@ function reducer(state, action) {
         ...state,
         todos: [...state.todos, action.payload]
       };
-      // Log action and new state for debugging
-      console.log('Updated State:', newState);
+
       return newState;
 
     // Update Todo

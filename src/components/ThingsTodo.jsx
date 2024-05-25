@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState } from 'react'
 import {
     Typography,
     Card,
@@ -14,13 +14,15 @@ import { CompleteTask } from '../components'
 const ThingsTodo = () => {
     const { state } = useStore();
     const { todos } = state;
-
-     // Filter out the completed todos
-     const activeTodos = todos.filter(todo => !todo.completed);
+    const [activeTodos, setActiveTodos] = useState([]);
 
     useEffect(() => {
-        console.log('Todos have been updated:', todos);
+       // Filter out the completed todos
+       console.log("filtering", todos); 
+       const activeTodos = todos.filter(todo => !todo.completed);
+       setActiveTodos(activeTodos);
     }, [todos]);
+
     return (
      <>
         <div className='flex align-center'>
