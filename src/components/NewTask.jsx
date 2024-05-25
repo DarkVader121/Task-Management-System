@@ -1,19 +1,30 @@
-import React from 'react'
-import {
-    Input,
-    Popover,
-    PopoverHandler,
-    PopoverContent,
-    Typography,
-    Button,
-  } from "@material-tailwind/react";
+import { Input, Popover, PopoverHandler, PopoverContent, Typography, Button, } from "@material-tailwind/react";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
-import { useTodosStore } from ""
+
+import { useStore } from '../stores';
+import React, {useState} from 'react'
 
 export default function NewTask () {
-    const [date, setDate] = React.useState();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [deadline, setDeadline] = useState('');
+  const { dispatch } = useStore(); 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim()) return;
+
+    dispatch({ type: 'ADD_TODO', payload: { title, completed: false } });
+
+    // Clear form fields after submission
+    setTitle('');
+    setDescription('');
+    setDeadline('');
+  }
+
+  
     return (
      <>
         <div className='flex align-center'>
@@ -22,24 +33,26 @@ export default function NewTask () {
                 New Task
             </Typography>
         </div>
+        <form onSubmit={handleSubmit}>
         <br/>
-        <Input size="lg" label="Title" />
+        <Input size="lg" label="Title" type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
         <br/>
-        <Input size="lg" label="Descriptions" />
+        <Input size="lg" label="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)}  />
         <br/>
         <Popover placement="bottom">
         <PopoverHandler>
           <Input
             label="Select a Deadline"
-            onChange={() => null}
-            value={date ? format(date, "PPP") : ""}
+            onChange={(e) => setDeadline(e.target.value)}
+            value={deadline ? format(deadline, "PPP") : ""}
+
           />
         </PopoverHandler>
         <PopoverContent>
           <DayPicker
             mode="single"
-            selected={date}
-            onSelect={setDate}
+            selected={deadline}
+            onSelect={setDeadline}
             showOutsideDays
             className="border-0"
             classNames={{
@@ -77,8 +90,9 @@ export default function NewTask () {
         </PopoverContent>
         </Popover>
 
-        <Button color="amber" className='mt-10'  size="lg">Create Task</Button>
-     </>
+        <Button color="amber" className='mt-10'  size="lg" type="submit">Create Task</Button>
+        </form>
+      </>
       );
 }
 
