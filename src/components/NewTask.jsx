@@ -27,9 +27,6 @@ export default function NewTask () {
     // Dispatch the add todo action
     dispatch({ type: 'ADD_TODO', payload: newTodo });
 
-    // Log the new todo item
-    // console.log('New Todo Added:', newTodo);
-
     // Clear form fields after submission
     setTitle('');
     setDescription('');
