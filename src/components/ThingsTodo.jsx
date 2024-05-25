@@ -2,8 +2,12 @@ import React, {useEffect} from 'react'
 import {
     Typography,
     Card,
+    Button,
 } from "@material-tailwind/react";
 import { useStore  } from '../stores'
+
+import { EditThingsTodo } from '../dialogs/EditThingsTodo';
+
 
 const ThingsTodo = () => {
     const { state } = useStore();
@@ -29,7 +33,7 @@ const ThingsTodo = () => {
                                     <Typography  variant="h1" id="Inter" className="font-bold lg:text-2xl">
                                         {todo.title}
                                     </Typography>
-                                    <i className="fa-solid fa-pen-to-square text-2xl ml-5 cursor-pointer"></i>
+                                    <i className="fa-solid fa-pen-to-square text-2xl ml-5 cursor-pointer" ></i>
                                 </div>
                                 <i className="fa-solid fa-trash text-2xl ml-5 cursor-pointer text-red-400 mr-3"></i>
                             </div>
@@ -40,6 +44,11 @@ const ThingsTodo = () => {
                             <Typography  variant="h1" id="Inter" className="lg:text-base mt-3">
                                 {todo.description}
                             </Typography>
+                            <div className='flex justify-center min-w-full mt-5'>
+                                <EditThingsTodo todo={todo} />
+
+                            </div>
+                            
                         </Card>
                     ))
                 ) : (
